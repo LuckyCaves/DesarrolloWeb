@@ -1,0 +1,51 @@
+
+.navbar{
+	background-color: #0F0326;
+}
+
+#navbarListContainer li{
+	padding-right: 0.5rem;
+}
+
+#navbarRightSide a{
+	padding: 0.5rem;
+}
+
+#searchForm{
+	align-items: center;
+	font-size: small;
+}
+
+#searchBar{
+	margin-right: 0.75rem;
+	height: min-content;
+	border-radius: 0.2rem;
+	background-color: #F5F7DC;
+	border: none;
+	outline: none;
+}
+
+#searchButton{
+	border-radius: 0.5rem;
+	background-color: #0F0326;
+	border: none;
+}
+
+#carouselId{
+	margin: auto;
+}
+
+#carouselId li::marker{
+	font-size: 0;
+}
+
+.w-100{
+	height: 75vh;
+}
+
+#carouselId li{
+	background-color: #0F0326;
+}
+#carouselId li.active{
+	background-color: #E65F5C;
+}
