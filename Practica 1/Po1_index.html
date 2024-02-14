@@ -15,6 +15,133 @@
 		/>
 
 		<script src="https://kit.fontawesome.com/50b8111978.js" crossorigin="anonymous"></script>
+
+		<!-- Modal Login -->
+		<div
+			class="modal fade"
+			id="modalUser"
+			tabindex="-1"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
+			
+			role="dialog"
+			aria-labelledby="modalTitleId"
+			aria-hidden="true"
+		>
+			<div
+				class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+				role="document"
+			>
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalTitleId">
+							Iniciar Sesión
+						</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<label for="email" class="form-label">Correo</label>
+							<div class="mb-3 input-group" >
+								<input type="email" class="form-control" id="email" required>
+								<span class="input-group-text">
+									<i class="fa-solid fa-user fa-lg"></i>
+								</span>
+							</div>
+							<label for="password" class="form-label">Contraseña</label>
+							<div class="mb-3 input-group">
+								<input type="password" class="form-control" id="password" required>
+								<span class="input-group-text">
+									<i class="fa-solid fa-key fa-lg"></i>
+								</span>
+							</div>
+							<div class="mb-3 form-check">
+								<input type="checkbox" class="form-check-input" id="remember">
+								<label class="form-check-label" for="remember">Recordar</label>
+							</div>
+							<div id="buttonContainer">
+								<button type="submit" class="btn btn-primary">Login</button>
+							</div>
+						</form>
+						
+					</div>
+					<div class="modal-footer">
+						<div class="text-center mt-3">
+							¿No tienes cuenta? <a href="" data-bs-toggle="modal" data-bs-target="#modalRegister" role="button">Registrate aquí</a>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Register -->
+		<div
+			class="modal fade"
+			id="modalRegister"
+			tabindex="-1"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
+			
+			role="dialog"
+			aria-labelledby="modalTitleId"
+			aria-hidden="true"
+		>
+			<div
+				class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+				role="document"
+			>
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalTitleId">
+							Registrarse
+						</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class=".row mb-3 d-flex">
+								<div class="col-6">
+									<input type="text" class="form-control" id="name" placeholder="Nombre" required>
+								</div>
+								<div class="col-6">
+									<input type="text" class="form-control" id="lastname" placeholder="Apellidos" required>
+								</div>
+							</div>
+							
+							<div class="mb-3">
+								<input type="email" class="form-control" id="email" placeholder="Correo" required>
+							</div>
+							<div class="mb-3">
+								<input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+							</div>
+							<div class="mb-3">
+								<input type="password" class="form-control" id="password" placeholder="Confirmar Contraseña" required>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button
+							type="button"
+							class="btn btn-success"
+							data-bs-dismiss="modal"
+						>
+							Registrarse
+						</button>	
+					</div>
+				</div>
+			</div>
+		</div>
 	</head>
 
 	<body>
@@ -44,15 +171,15 @@
 							<form class="d-flex" id="searchForm">
 								<input id="searchBar" type="text" placeholder="Buscar Productos">
 								<button id="searchButton" type="button">
-									<i class="fa-solid fa-magnifying-glass fa-lg fa-spin" style="color: #b5d99c;"></i>
+									<i class="fa-solid fa-magnifying-glass fa-lg" style="color: #b5d99c;"></i>
 								</button>
 							</form>
 						</ul>
 						<div class="d-flex" id="navbarRightSide">
+							<a href="" data-bs-toggle="modal" data-bs-target="#modalUser" role="button">
+								<i class="fa-solid fa-user fa-lg" style="color: #b5d99c"></i>
 							<a href="">
-								<i class="fa-solid fa-user fa-lg fa-spin" style="color: #b5d99c;"></i>
-							<a href="">
-								<i class="fa-solid fa-cart-shopping fa-lg fa-spin" style="color: #b5d99c;"></i>
+								<i class="fa-solid fa-cart-shopping fa-lg" style="color: #b5d99c;"></i>
 							</a>
 						</div>
 					</div>
