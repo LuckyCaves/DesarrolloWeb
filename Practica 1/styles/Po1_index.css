@@ -1,6 +1,9 @@
-
 .navbar{
 	background-color: #0F0326;
+}
+
+.navbar img{
+	height: 4.5rem;
 }
 
 #navbarListContainer li{
