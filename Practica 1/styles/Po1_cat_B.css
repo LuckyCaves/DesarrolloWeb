@@ -37,3 +37,26 @@
 #modalUser #buttonContainer{
 	text-align: center;
 }
+
+#productos{
+	margin-top: 1rem;
+}
+
+#productos img{
+	margin: auto;
+
+}
+
+#productos .row{
+	width: 100%;
+	margin: auto;
+}
+
+#productos #card-container{
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+.card{
+	width: 95%;
+}

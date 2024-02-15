@@ -65,11 +65,16 @@ h4 button{
 #productCart{
     display: grid;
     position: relative;
+    margin: 1rem;
 }
 
 #productCart img{
     max-height: 9rem;
     max-width: 100%;
+}
+
+#productos{
+    align-items: center;
 }
 
 #productos #inputQuantity, #productos #inputPrice{
@@ -87,7 +92,6 @@ h4 button{
 #summary{
     padding: 1rem;
     margin: 1rem;
-    margin-left: 2rem;
     border-radius: 0.5rem;
     box-shadow: 0 0 5px #0F0326;
     justify-content: center;
@@ -117,9 +121,13 @@ h4 button{
         max-width: 100%; 
     }
 
-    #payment-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+    #productos #inputQuantity, #productos #inputPrice{
+        width: 60%;
+    }
+
+    #summary{
+        margin: 1rem;
+    
     }
 }
 
@@ -131,4 +139,8 @@ h4 button{
         right: 1rem;
         top: 2rem;
     }
+}
+
+#modalUser #buttonContainer{
+	text-align: center;
 }
