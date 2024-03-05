@@ -2,7 +2,7 @@ class ShoppingCart
 {
     constructor() {
         this.productsProxy = [];
-        this.products = [];
+        this.productsAdded = [];
     }
 
     addItem(productUuid, amount) 
@@ -14,6 +14,7 @@ class ShoppingCart
         else {
             const newProduct = new ProductProxy(productUuid, amount);
             this.productsProxy.push(newProduct);
+            this.productsAdded.push(products.getProductById(productUuid));
         }
     }
 
@@ -46,7 +47,7 @@ class ShoppingCart
     {
         let total = 0;
         this.productsProxy.forEach(product => {
-            const productData = this.products.find(p => p.uuid === product.uuid);
+            const productData = this.productsAdded.find(p => p.uuid === product.uuid);
             total += productData.pricePerUnit * product.cantidad;
         });
         return total;

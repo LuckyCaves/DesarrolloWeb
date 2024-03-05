@@ -23,14 +23,14 @@ class Products
 
     createProduct(product)
     {
-        let newProduct = new Product(product.uuid, product.title, product.description, product.imageUrl, product.unit, product.stock, product.pricePerUnit, product.category);
-        this.addProduct(newProduct);
+        // let newProduct = new Product(product.uuid, product.title, product.description, product.imageUrl, product.unit, product.stock, product.pricePerUnit, product.category);
+        this.addProduct(product);
     }
 
     updateProduct(uuid, updatedProduct)
     {
         this.deleteProduct(uuid);
-        let newProduct = new Product(updatedProduct.uuid, updatedProduct.title, updatedProduct.description, updatedProduct.imageUrl, updatedProduct.unit, updatesProduct.stock, updatedProduct.pricePerUnit, updatedProduct.category);
+        // let newProduct = new Product(updatedProduct.uuid, updatedProduct.title, updatedProduct.description, updatedProduct.imageUrl, updatedProduct.unit, updatesProduct.stock, updatedProduct.pricePerUnit, updatedProduct.category);
         this.addProduct(updatedProduct);
     }
 
@@ -39,7 +39,5 @@ class Products
         let index = this.products.findIndex(product => product.uuid === uuid);
         this.products.splice(index, 1);
     }
-
-    
 
 }
