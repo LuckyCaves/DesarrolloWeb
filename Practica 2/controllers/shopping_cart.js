@@ -1,8 +1,9 @@
 class ShoppingCart
 {
-    constructor() {
+    constructor(productos) {
         this.productsProxy = [];
         this.productsAdded = [];
+        this.lista = productos;
     }
 
     addItem(productUuid, amount) 
@@ -13,8 +14,8 @@ class ShoppingCart
             existingProduct.cantidad += amount;
         else {
             const newProduct = new ProductProxy(productUuid, amount);
+            this.productsAdded.push(this.lista.getProductById(productUuid));
             this.productsProxy.push(newProduct);
-            this.productsAdded.push(products.getProductById(productUuid));
         }
     }
 
@@ -47,8 +48,8 @@ class ShoppingCart
     {
         let total = 0;
         this.productsProxy.forEach(product => {
-            const productData = this.productsAdded.find(p => p.uuid === product.uuid);
-            total += productData.pricePerUnit * product.cantidad;
+            let productInfo = this.lista.getProductById(product.uuid);
+            total += productInfo.pricePerUnit * product.cantidad;
         });
         return total;
     }
@@ -58,7 +59,7 @@ class ShoppingCart
 class ProductProxy
 {
     constructor(uuid, cantidad) {
-        this.uuid = "";
+        this.uuid = uuid;
         this.cantidad = cantidad;
     }
 }
