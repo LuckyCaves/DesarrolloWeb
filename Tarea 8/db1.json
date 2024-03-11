@@ -1,0 +1,68 @@
+{
+  "users": [
+    {
+      "name": "John",
+      "email": "john@gmail.com",
+      "edad": 25,
+      "sexo": "H",
+      "id": "33f7"
+    },
+    {
+      "name": "Jane",
+      "email": "jane@gmail.com",
+      "edad": 22,
+      "sexo": "M",
+      "id": "dfcb"
+    },
+    {
+      "name": "Doe",
+      "email": "doe@gmail.com",
+      "edad": 30,
+      "sexo": "H",
+      "id": "c37e"
+    }
+  ],
+  "products": [
+    {
+      "name": "Producto 1",
+      "sku": "PROD-1",
+      "price": 100,
+      "id": "2c17"
+    },
+    {
+      "name": "Producto 2",
+      "sku": "PROD-2",
+      "price": 200,
+      "id": "458a"
+    },
+    {
+      "name": "Producto 3",
+      "sku": "PROD-3",
+      "price": 300,
+      "id": "7520"
+    },
+    {
+      "id": "4637",
+      "name": "Producto 4",
+      "sku": "PROD-4",
+      "price": 400
+    }
+  ],
+  "banks": [
+    {
+      "name": "Banco 1",
+      "code": "BAN-1",
+      "id": "22c1"
+    },
+    {
+      "name": "Banco 2",
+      "code": "BAN-2",
+      "id": "f6dc"
+    },
+    {
+      "name": "Banco 3",
+      "code": "BAN-3",
+      "id": "8466"
+    }
+  ]
+}
