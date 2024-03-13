@@ -1,0 +1,8 @@
+[{"id":2,"name":"Jane Doe","email":"jane.doe@gmail.com","edad":26,"sexo":"F"},{"id":3,"name":"John Smith","email":"john.smith@gmail.com","edad":25,"sexo":"M"}, 
+{
+        "id": 3,
+        "name": "John Smith",
+        "email": "john.smith@gmail.com",
+        "edad": 25,
+        "sexo": "M"
+    }]
