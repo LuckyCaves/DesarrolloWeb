@@ -1,0 +1,6 @@
+GET localhost:3000'/products
+
+headers = {
+    'Content-Type': 'application/json',
+    'task': '1'
+}

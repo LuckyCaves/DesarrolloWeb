@@ -1,0 +1,29 @@
+{
+    "products": [
+        {
+            "name": "Producto 1",
+            "sku": "PROD-1",
+            "price": 100
+        },
+        {
+            "name": "Producto 2",
+            "sku": "PROD-2",
+            "price": 200
+        },
+        {
+            "name": "Producto 3",
+            "sku": "PROD-3",
+            "price": 300
+        },
+        {
+            "name": "Producto 4",
+            "sku": "PROD-4",
+            "price": 400
+        },
+        {
+            "name": "Producto 5",
+            "sku": "PROD-5",
+            "price": 500
+        }
+    ]
+}
