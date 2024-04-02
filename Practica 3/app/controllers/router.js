@@ -6,11 +6,17 @@ const router = express.Router();
 const productRouter = require('../../routes/products.js');
 const adminProductRouter = require('../../routes/admin_products.js');
 
-router.use('/products', productRouter);
-router.use('/admin/products', validateAdmin, adminProductRouter);
+router.all('/products', productRouter);
+router.all('/admin/products', validateAdmin, adminProductRouter);
 
-function validateAdmin()
+function validateAdmin(req, res, next)
 {
+
+    if (!req.headers['x-auth'])
+        res.status(403).send('Acceso no autorizado, no se cuenta con privilegios de administrador');
+    else
+        next();
+
 
 }
 

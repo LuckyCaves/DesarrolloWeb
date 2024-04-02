@@ -8,7 +8,8 @@ class ProductException {
 
 class Product {
     constructor(title, description, imageUrl, unit, stock, pricePerUnit, category) {
-        this._uuid = generateUUID();
+        // this._uuid = generateUUID();
+        this._uuid = title.substring(0, 3);
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;

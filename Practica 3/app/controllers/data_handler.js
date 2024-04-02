@@ -1,6 +1,9 @@
 "use strict;"
+const fs = require('fs');
+const path = require('path');
+const Product = require('./products.js');
 
-const products = [];
+let products = [];
 
 function getProducts() {
     return products;
@@ -11,6 +14,7 @@ function getProductById(uuid) {
 }
 
 function createProduct(product) {
+    console.log(products);
     products.push(Product.createFromObject(product));
 }
 
@@ -54,9 +58,16 @@ function findProducts(query) {
     return result;
 }
 
+function writeProducts() {
+    fs.writeFileSync(
+        path.resolve(__dirname + "/../../data/products.json"), JSON.stringify(products));
+}
+
 exports.getProducts = getProducts;
 exports.getProductById = getProductById;
 exports.createProduct = createProduct;
 exports.updateProduct = updateProduct;
 exports.deleteProduct = deleteProduct;
 exports.findProducts = findProducts;
+exports.writeProducts = writeProducts;
+exports.products = products;
