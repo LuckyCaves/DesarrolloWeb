@@ -1,0 +1,62 @@
+"use strict;"
+
+const products = [];
+
+function getProducts() {
+    return products;
+}
+
+function getProductById(uuid) {
+    return products.find(product => product.uuid == uuid);
+}
+
+function createProduct(product) {
+    products.push(Product.createFromObject(product));
+}
+
+function updateProduct(uuid, updatedProduct) {
+    Product.cleanObject(updatedProduct);
+    let index = products.findIndex(product => product.uuid == uuid);
+    if (index > 0) {
+        Object.assign(products[index], updatedProduct);
+    }
+}
+
+function deleteProduct(uuid) {
+    let index = products.findIndex(product => product.uuid == uuid);
+    if (index > 0) {
+        return products.splice(index, 1)[0];
+    }
+}
+
+function findProducts(query) {
+    let category = '';
+    let title = '';
+    let result = [...products];
+
+    if (query.includes(':')) {
+        [category, title] = query.split(':');
+        category = category.trim();
+        title = title.trim();
+    } else {
+        title = query;
+        title = title.trim();
+    }
+
+    if (category !== '') {
+        result = result.filter(product => product.category.includes(category));
+    }
+
+    if (title !== '') {
+        result = result.filter(product => product.title.includes(title));
+    }
+
+    return result;
+}
+
+exports.getProducts = getProducts;
+exports.getProductById = getProductById;
+exports.createProduct = createProduct;
+exports.updateProduct = updateProduct;
+exports.deleteProduct = deleteProduct;
+exports.findProducts = findProducts;
