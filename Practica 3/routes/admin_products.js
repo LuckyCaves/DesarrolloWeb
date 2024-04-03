@@ -14,13 +14,13 @@ function addProduct(req, res, next){
 
     try
     {
-        // const producto = Product.createFromObject(req.body);
         producto = new Product(req.body.title, req.body.description, req.body.imageUrl, req.body.unit, req.body.stock, req.body.pricePerUnit, req.body.category);
     }
     catch (error)
     {
         res.status(400);
-        res.send(error.message)
+        res.send(error.errorMessage);
+        next();
     }
 
     dataHandler.createProduct(producto);
@@ -33,7 +33,7 @@ router.put('/:id', updateProduct, dataHandler.writeProducts);
 
 function updateProduct(req, res, next){
 
-    let product = dataHandler.getProductById(req.body.uuid);
+    let product = dataHandler.getProductById(req.params.id);
 
     if(product === undefined)
     {
@@ -44,8 +44,8 @@ function updateProduct(req, res, next){
 
     try
     {
-        let updatedProduct = new Product(req.body.product.title, req.body.product.description, req.body.product.imageUrl, req.body.product.unit, req.body.product.stock, req.body.product.pricePerUnit, req.body.product.category);
-        dataHandler.updateProduct(req.body.uuid, updatedProduct);
+        let updatedProduct = new Product(req.body.title, req.body.description, req.body.imageUrl, req.body.unit, req.body.stock, req.body.pricePerUnit, req.body.category);
+        dataHandler.updateProduct(req.params.id, updatedProduct);
     }
     catch (error)
     {
@@ -59,4 +59,31 @@ function updateProduct(req, res, next){
 
 }
 
+router.delete('/:id', deleteProduct, dataHandler.writeProducts);
+
+function deleteProduct(req, res, next){
+
+    let product = dataHandler.getProductById(req.params.id);
+
+    if(product === undefined)
+    {
+        res.status(404);
+        res.send("Producto no encontrado.");
+    }
+
+    try
+    {
+        dataHandler.deleteProduct(req.params.id);
+    }
+    catch (error)
+    {
+        res.status(400);
+        res.send(error.message);
+    }
+
+    res.status(201);
+    res.send("Producto eliminado exitosamente.");
+    next();
+
+}
 module.exports = router;

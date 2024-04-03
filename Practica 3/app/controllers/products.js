@@ -1,4 +1,5 @@
 "use strict";
+const utils = require('./utils.js');
 
 class ProductException {
     constructor(errorMessage) {
@@ -9,8 +10,8 @@ class ProductException {
 class Product {
     constructor(title, description, imageUrl, unit, stock, pricePerUnit, category) {
         // this._uuid = generateUUID();
-        this._uuid = title.substring(0, 3);
         this.title = title;
+        this._uuid = title.substring(0, 3);
         this.description = description;
         this.imageUrl = imageUrl;
         this.unit = unit;
@@ -98,7 +99,7 @@ class Product {
         
         let product = new Product(' ', ' ', ' ', ' ', 0, 0, ' '); // Empty product.
         if (!newProduct._uuid) {
-            newProduct._uuid = generateUUID();
+            newProduct._uuid = utils.generateUUID();
         }
         product._uuid = newProduct._uuid;
         product.title = newProduct._title;

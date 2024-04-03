@@ -27,7 +27,7 @@ function updateProduct(uuid, updatedProduct) {
 
 function deleteProduct(uuid) {
     let index = products.findIndex(product => product.uuid == uuid);
-    if (index > 0) {
+    if (index !== -1) {
         return products.splice(index, 1)[0];
     }
 }

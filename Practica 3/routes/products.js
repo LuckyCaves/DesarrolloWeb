@@ -9,15 +9,29 @@ router.get('/', (req, res) => {
     let products = [];
 
     if(!req.body.query)
-    {
         products = dataHandler.getProducts();
+    else
+        products = dataHandler.findProducts(req.body.query);
+
+    res.send(products);
+
+});
+
+router.get('/:id', (req, res) => {
+
+    let product = dataHandler.getProductById(req.params.id);
+
+    if(product === undefined)
+    {
+        res.status(404);
+        res.send("Product not found.");
     }
     else
     {
-        products = dataHandler.findProducts(req.body.query);
+        res.status(200);
+        res.send(product);
     }
 
-    res.send(products);
 
 });
 
