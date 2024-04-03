@@ -23,6 +23,7 @@ class ShoppingCart {
     get productProxies() {
         return this._productProxies;
     }
+
     set productProxies(value) {
         throw new ShoppingCartException("Unable to modify proxies directly, use the corresponding methods instead.");
     }
@@ -30,6 +31,7 @@ class ShoppingCart {
     get products() {
         return this._products;
     }
+
     set products(value) {
         this._products = [];
         if (typeof value === 'string') {
@@ -47,6 +49,7 @@ class ShoppingCart {
     addItem(productUuid, amount) {
         if (amount == 0) return; // Ignore empty items
         if (amount < 0) throw ShoppingCartException("Number of items to add must be a positive number.");
+        if (productUuid == undefined) throw ShoppingCartException("ProductUuid not received.");
         
         let newItem = new ProductProxy(productUuid, amount);
         let oldItem = this.productProxies.find(item => item.productUuid === productUuid);

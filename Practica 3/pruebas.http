@@ -3,6 +3,29 @@ GET http://localhost:3000/products HTTP/1.1
 content-type: application/json
 
 ###
+GET http://localhost:3000/products HTTP/1.1
+content-type: application/json
+
+{
+    "query": "prod:"
+}
+
+###
+GET http://localhost:3000/products HTTP/1.1
+content-type: application/json
+
+{
+    "query": ":6 Producto"
+}
+
+###
+GET http://localhost:3000/products HTTP/1.1
+content-type: application/json
+
+{
+    "query": "prod:6 Producto"
+}
+###
 POST http://localhost:3000/admin/products HTTP/1.1
 content-type: application/json
 
@@ -21,11 +44,41 @@ content-type: application/json
 x-auth: Hola
 
 {
-    "title": "6 Producto",
+    "title": "5 Producto",
     "description": "Prueba5",
     "imageUrl":  "NoHayImagen",
     "unit": "pieza",
     "stock": 15,
-    "pricePerUnit": 40,
+    "pricePerUnit": 20,
     "category": "prod"
+}
+
+###
+POST http://localhost:3000/products/cart HTTP/1.1
+content-type: application/json
+
+[
+    {
+        "productUuid": "5 P",
+        "amount": 2
+    }
+]
+
+###
+
+PUT  http://localhost:3000/admin/products/:id HTTP/1.1
+content-type: application/json
+x-auth: Hola
+
+{
+    "uuid" : "5 P",
+    "product": {
+        "title": "5 Producto",
+        "description": "Prueba5",
+        "imageUrl":  "NoHayImagen",
+        "unit": "pieza",
+        "stock": 10,
+        "pricePerUnit": 40,
+        "category": "prod"
+    }
 }

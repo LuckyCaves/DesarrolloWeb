@@ -14,16 +14,15 @@ function getProductById(uuid) {
 }
 
 function createProduct(product) {
-    console.log(products);
     products.push(Product.createFromObject(product));
 }
 
 function updateProduct(uuid, updatedProduct) {
     Product.cleanObject(updatedProduct);
     let index = products.findIndex(product => product.uuid == uuid);
-    if (index > 0) {
+
+    if (index !== -1)
         Object.assign(products[index], updatedProduct);
-    }
 }
 
 function deleteProduct(uuid) {
