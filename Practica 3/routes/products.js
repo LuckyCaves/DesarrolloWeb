@@ -1,12 +1,13 @@
 const express = require('express');
 const dataHandler = require('../app/controllers/data_handler.js');
 const ShoppingCart = require('../app/controllers/shopping_cart.js');
+const fs = require('fs');
 
+dataHandler.readProducts();
+let cart = new ShoppingCart();
 const router = express.Router();
 
 router.get('/', (req, res) => {
-
-    let products = [];
 
     if(!req.body.query)
         products = dataHandler.getProducts();
@@ -37,12 +38,11 @@ router.get('/:id', (req, res) => {
 
 router.post('/cart', (req, res) => {
 
-    let cart = new ShoppingCart();
-
     if(!(req.body instanceof Array))
     {
         res.status(400);
         res.send("Invalid request body.");
+        return;
     }
 
     let productsError = [];
@@ -50,6 +50,10 @@ router.post('/cart', (req, res) => {
     {
         try
         {
+            let found = dataHandler.getProductById(product.productUuid);
+            console.log(found);
+            if(found === undefined)
+                throw new Error("Product not found.");
             cart.addItem(product.productUuid, product.amount);
         }
         catch (error)

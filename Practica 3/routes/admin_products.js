@@ -51,6 +51,7 @@ function updateProduct(req, res, next){
     {
         res.status(400);
         res.send(error.message);
+        return;
     }
 
     res.status(201);
@@ -69,6 +70,7 @@ function deleteProduct(req, res, next){
     {
         res.status(404);
         res.send("Producto no encontrado.");
+        return;
     }
 
     try
@@ -79,6 +81,7 @@ function deleteProduct(req, res, next){
     {
         res.status(400);
         res.send(error.message);
+        return;
     }
 
     res.status(201);
@@ -86,4 +89,5 @@ function deleteProduct(req, res, next){
     next();
 
 }
+
 module.exports = router;

@@ -11,7 +11,7 @@ class Product {
     constructor(title, description, imageUrl, unit, stock, pricePerUnit, category) {
         // this._uuid = generateUUID();
         this.title = title;
-        this._uuid = title.substring(0, 3);
+        this._uuid = title.substring(0, 3) + Math.floor(pricePerUnit);
         this.description = description;
         this.imageUrl = imageUrl;
         this.unit = unit;
@@ -98,11 +98,12 @@ class Product {
         Product.cleanObject(newProduct);
         
         let product = new Product(' ', ' ', ' ', ' ', 0, 0, ' '); // Empty product.
+        product.title = newProduct._title;
         if (!newProduct._uuid) {
-            newProduct._uuid = utils.generateUUID();
+            // newProduct._uuid = utils.generateUUID();
+            newProduct._uuid = title.substring(0, 3) + Math.floor(pricePerUnit);
         }
         product._uuid = newProduct._uuid;
-        product.title = newProduct._title;
         product.description = newProduct._description;
         product.imageUrl = newProduct._imageUrl;
         product.unit = newProduct._unit;

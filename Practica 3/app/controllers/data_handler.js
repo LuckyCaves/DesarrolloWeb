@@ -62,6 +62,12 @@ function writeProducts() {
         path.resolve(__dirname + "/../../data/products.json"), JSON.stringify(products));
 }
 
+function readProducts()
+{
+    products = JSON.parse(fs.readFileSync(__dirname + "/../../data/products.json"));
+    products = products.map(product => Product.createFromObject(product));
+}
+
 exports.getProducts = getProducts;
 exports.getProductById = getProductById;
 exports.createProduct = createProduct;
@@ -69,4 +75,4 @@ exports.updateProduct = updateProduct;
 exports.deleteProduct = deleteProduct;
 exports.findProducts = findProducts;
 exports.writeProducts = writeProducts;
-exports.products = products;
+exports.readProducts = readProducts;
