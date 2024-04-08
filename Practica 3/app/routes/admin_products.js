@@ -1,8 +1,8 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const Product = require('../app/controllers/products.js');
-const dataHandler = require('../app/controllers/data_handler.js');
+const Product = require('../controllers/products.js');
+const dataHandler = require('../controllers/data_handler.js');
 
 const router = express.Router();
 

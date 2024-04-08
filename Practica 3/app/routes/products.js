@@ -1,6 +1,6 @@
 const express = require('express');
-const dataHandler = require('../app/controllers/data_handler.js');
-const ShoppingCart = require('../app/controllers/shopping_cart.js');
+const dataHandler = require('../controllers/data_handler.js');
+const ShoppingCart = require('../controllers/shopping_cart.js');
 const fs = require('fs');
 
 dataHandler.readProducts();
@@ -51,7 +51,6 @@ router.post('/cart', (req, res) => {
         try
         {
             let found = dataHandler.getProductById(product.productUuid);
-            console.log(found);
             if(found === undefined)
                 throw new Error("Product not found.");
             cart.addItem(product.productUuid, product.amount);
