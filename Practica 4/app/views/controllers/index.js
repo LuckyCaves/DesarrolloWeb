@@ -1,7 +1,12 @@
-function getProducts()
+function getProducts(pageNumber)
 {
+    cleanProductsCard();
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://localhost:3000/products', true);
+
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    if(pageNumber !== undefined)
+        xhr.setRequestHeader('page', pageNumber);
 
     xhr.onload = function() {
         if (xhr.status === 200) {
@@ -24,6 +29,15 @@ function getProducts()
     xhr.send();
 }
 
+function cleanProductsCard()
+{
+    let productsContainer = document.getElementsByClassName('row')[0];
+    while(productsContainer.firstChild)
+    {
+        productsContainer.removeChild(productsContainer.firstChild);
+    }
+}
+
 function addProductCard(product)
 {
     let productCard = document.createElement('div');
@@ -35,7 +49,6 @@ function addProductCard(product)
 
     let imgProduct = document.createElement('img');
     imgProduct.src = "http://localhost:3000" + product._imageUrl;
-    console.log(imgProduct.src);
     imgProduct.className = 'card-img-top';
     imgProduct.alt = product._title;
 
@@ -65,5 +78,20 @@ function addProductCard(product)
 
 window.onload = function()
 {
-    getProducts();   
+
+    let navItems = document.querySelectorAll('li.nav-item a');
+
+    navItems.forEach((el) => {
+        el.addEventListener('click',() => {
+            if (!el.classList.contains('active')) {
+                navItems.forEach((others) => {
+                //Remove the update to innerHTML for all of the items however you plan on doing that, I would suggest just adding or removing a class to update their style
+                    others.classList.remove('active');
+                });
+                el.classList.add('active');
+            };
+        });
+    });
+
+    getProducts(1);
 };

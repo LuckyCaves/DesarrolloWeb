@@ -8,11 +8,22 @@ let cart = new ShoppingCart();
 const router = express.Router();
 
 router.get('/', (req, res) => {
-
-    if(!req.body.query)
+    if(req.headers['page'] !== undefined)
+    {
         products = dataHandler.getProducts();
+        const page = parseInt(req.headers['page']);
+            const startIndex = (page - 1) * 4;
+            const endIndex = page * 4;
+        products = dataHandler.getProducts().slice(startIndex, endIndex);
+    }
+    else if(!req.body.query)
+    {
+        products = dataHandler.getProducts();
+    }
     else
+    {
         products = dataHandler.findProducts(req.body.query);
+    }
 
     res.send(products);
 

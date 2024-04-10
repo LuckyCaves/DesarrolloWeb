@@ -1,6 +1,7 @@
 ### 1. Haz una llamada para mostrar tu arreglo de productos vacío.
 GET http://localhost:3000/products HTTP/1.1
 content-type: application/json
+page: 1
 
 ### 2. Haz una llamada a la ruta para crear un producto, sin autenticación para ver el error.
 POST http://localhost:3000/admin/products HTTP/1.1
@@ -55,11 +56,26 @@ x-auth: Hola
 {
     "title": "Cuerda Dinámica",
     "description": "Alpine 7.9mm 70m - Tendon",
-    "imageUrl":  "views/images/Productos/Cuerda_Alpine_7.9mm_Amarillo.jpg",
+    "imageUrl":  "/views/images/Productos/Cuerda_Alpine_7.9mm_Amarillo.jpg",
     "unit": "pieza",
     "stock": 5,
     "pricePerUnit": 100,
     "category": "Ropa"
+}
+
+###
+POST http://localhost:3000/admin/products HTTP/1.1
+content-type: application/json
+x-auth: Hola
+
+{
+    "title": "Casco",
+    "description": "Casco Boreo - PETZL",
+    "imageUrl":  "/views/images/Productos/Casco_Boreo_Azul.jpg",
+    "unit": "pieza",
+    "stock": 15,
+    "pricePerUnit": 50,
+    "category": "Accesorio"
 }
 
 ###
