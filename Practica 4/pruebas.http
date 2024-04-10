@@ -23,13 +23,13 @@ content-type: application/json
 x-auth: Hola
 
 {
-    "title": "Pulsera",
-    "description": "Pulsera de plata",
-    "imageUrl":  "NoHayImagen",
-    "unit": "pieza",
+    "title": "Gatas",
+    "description": "Calzado para Escalar Method S - Black Diamond",
+    "imageUrl":  "/views/images/Productos/MethodS_Gatas_Octane.jpg",
+    "unit": "Par",
     "stock": 10,
-    "pricePerUnit": 50,
-    "category": "Accesorios"
+    "pricePerUnit": 100,
+    "category": "Calzado"
 }
 
 ###
@@ -46,6 +46,22 @@ x-auth: Hola
     "pricePerUnit": 100,
     "category": "Ropa"
 }
+
+###
+POST http://localhost:3000/admin/products HTTP/1.1
+content-type: application/json
+x-auth: Hola
+
+{
+    "title": "Cuerda Dinámica",
+    "description": "Alpine 7.9mm 70m - Tendon",
+    "imageUrl":  "views/images/Productos/Cuerda_Alpine_7.9mm_Amarillo.jpg",
+    "unit": "pieza",
+    "stock": 5,
+    "pricePerUnit": 100,
+    "category": "Ropa"
+}
+
 ###
 POST http://localhost:3000/admin/products HTTP/1.1
 content-type: application/json
