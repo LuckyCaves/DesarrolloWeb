@@ -15,6 +15,7 @@ function getProducts(pageNumber)
             response.forEach(function(product) {
                 addProductCard(product);
             });
+            addListener();
         } else {
             // Request failed
             console.error('Request failed. Status:', xhr.status);
@@ -28,6 +29,35 @@ function getProducts(pageNumber)
 
     xhr.send();
 }
+
+function addCartProducts(uuid, amount)
+{
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:3000/products/cart', true);
+
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    let body = JSON.stringify([{productUuid: uuid, amount: amount}]);
+
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Request was successful
+            const response = JSON.parse(xhr.responseText);
+            sessionStorage.setItem('cart', JSON.stringify(response));
+            alert("producto agregado al carrito");
+        } else {
+            // Request failed
+            alert("No se pudo agregar el producto al carrito.");
+        }
+    };
+
+    xhr.onerror = function() {
+        // An error occurred during the request
+        console.error('Request error');
+    };
+
+    xhr.send(body);
+}
+
 
 function cleanProductsCard()
 {
@@ -60,12 +90,22 @@ function addProductCard(product)
     productDescription.className = 'card-text';
     productDescription.textContent = product._description;
 
+    let button = document.createElement('button');
+    button.id = 'addCart';
+    button.className = 'btn btn-primary';
+    button.textContent = 'Agregar al carrito';
+    button.setAttribute('data-product-id', product._uuid);
+    button.type = 'button';
+    button.setAttribute('data-bs-toggle', 'modal');
+    button.setAttribute('data-bs-target', '#modalCart');
+
     let cardBody = document.createElement('div');
     cardBody.className = 'card-body';
 
     cardBody.appendChild(imgProduct);
     cardBody.appendChild(productName);
     cardBody.appendChild(productDescription);
+    cardBody.appendChild(button);
 
     card.appendChild(cardBody);
 
@@ -76,22 +116,29 @@ function addProductCard(product)
 
 }
 
-window.onload = function()
+function addListener()
 {
-
-    let navItems = document.querySelectorAll('li.nav-item a');
-
-    navItems.forEach((el) => {
-        el.addEventListener('click',() => {
-            if (!el.classList.contains('active')) {
-                navItems.forEach((others) => {
-                //Remove the update to innerHTML for all of the items however you plan on doing that, I would suggest just adding or removing a class to update their style
-                    others.classList.remove('active');
-                });
-                el.classList.add('active');
-            };
+    let botonesAgregarCarrito = document.querySelectorAll('#addCart');
+    let confirmButton = document.getElementById('confirmarBtn');
+    
+    botonesAgregarCarrito.forEach(function(boton){
+        boton.addEventListener('click', function(){
+            let productId = this.getAttribute('data-product-id');
+            confirmButton.setAttribute('data-product-id', productId);
         });
     });
 
+    confirmButton.addEventListener('click', function(){
+        let productId = this.getAttribute('data-product-id');
+        let cantidad = document.getElementById('quantity').value;
+        console.log(cantidad);
+        console.log(productId);
+        addCartProducts(productId, cantidad);
+    });
+}
+
+
+window.onload = function()
+{
     getProducts(1);
 };

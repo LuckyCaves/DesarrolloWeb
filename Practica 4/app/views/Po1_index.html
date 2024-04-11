@@ -128,7 +128,7 @@
 								<input type="password" class="form-control" id="password" placeholder="Contraseña" required>
 							</div>
 							<div class="mb-3">
-								<input type="password" class="form-control" id="password" placeholder="Confirmar Contraseña" required>
+								<input type="password" class="form-control" id="confirmPassword" placeholder="Confirmar Contraseña" required>
 							</div>
 						</form>
 					</div>
@@ -144,6 +144,63 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- Modal Product -->
+		<div
+			class="modal fade"
+			id="modalCart"
+			tabindex="-1"
+			data-bs-backdrop="static"
+			data-bs-keyboard="false"
+			
+			role="dialog"
+			aria-labelledby="modalTitleId"
+			aria-hidden="true"
+		>
+			<div
+				class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+				role="document"
+			>
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalTitleId">
+							Escoge la cantidad a agregar:
+						</h5>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body">
+						<form onkeypress="return event.keyCode != 13">
+							<div class="mb-3">
+								<label for="quantity" class="form-label">Cantidad</label>
+								<input type="number" class="form-control" id="quantity" min=0 oninput="validity.valid||(value='')" required>
+							</div>
+						</form>
+						<button
+							id="confirmarBtn"
+							type="button"
+							class="btn btn-success"
+							data-bs-dismiss="modal"
+						>
+							Agregar
+						</button>	
+						<button
+							type="button"
+							class="btn btn-danger"
+							data-bs-dismiss="modal"
+						>
+							Cancelar
+						</button>	
+					</div>
+				</div>
+			</div>
+		</div>
+
+
 	</head>
 
 	<body style="background-color: #e7e8ec;">
@@ -181,6 +238,7 @@
 						<div class="d-flex" id="navbarRightSide">
 							<a href="" data-bs-toggle="modal" data-bs-target="#modalUser" role="button">
 								<i class="fa-solid fa-user fa-lg" style="color: #E65F5C"></i>
+							</a>
 							<a href="http://localhost:3000/shopping_cart">
 								<i class="fa-solid fa-cart-shopping fa-lg" style="color: #E65F5C;"></i>
 							</a>
@@ -219,6 +277,7 @@
 		</main>
 		<div id="productos">
 			<div class="row">
+
 			</div>
 
 			<nav aria-label="Page navigation">
