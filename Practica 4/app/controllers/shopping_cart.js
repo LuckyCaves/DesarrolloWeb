@@ -1,4 +1,5 @@
 "use strict";
+const Product = require('./products.js');
 
 class ShoppingCartException {
     constructor(errorMessage) {
@@ -51,11 +52,11 @@ class ShoppingCart {
         if (amount < 0) throw ShoppingCartException("Number of items to add must be a positive number.");
         if (productUuid == undefined) throw ShoppingCartException("ProductUuid not received.");
         
-        let newItem = new ProductProxy(productUuid, amount);
+        let newItem = new ProductProxy(productUuid, parseInt(amount));
         let oldItem = this.productProxies.find(item => item.productUuid === productUuid);
 
         if (oldItem) {
-            oldItem.amount += newItem.amount; // Update existing value by adding both amounts.
+            oldItem.amount += parseInt(newItem.amount); // Update existing value by adding both amounts.
         } else {
             this.productProxies.push(newItem); // Add item to shopping cart.
         }

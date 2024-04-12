@@ -10,33 +10,29 @@ function getProducts(pageNumber)
 
     xhr.onload = function() {
         if (xhr.status === 200) {
-            // Request was successful
             const response = JSON.parse(xhr.responseText);
             response.forEach(function(product) {
                 addProductCard(product);
             });
             addListener();
         } else {
-            // Request failed
             console.error('Request failed. Status:', xhr.status);
         }
     };
 
     xhr.onerror = function() {
-        // An error occurred during the request
         console.error('Request error');
     };
 
     xhr.send();
 }
 
-function addCartProducts(uuid, amount)
+function addCartProducts(body)
 {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://localhost:3000/products/cart', true);
 
     xhr.setRequestHeader('Content-Type', 'application/json');
-    let body = JSON.stringify([{productUuid: uuid, amount: amount}]);
 
     xhr.onload = function() {
         if (xhr.status === 200) {
@@ -45,19 +41,16 @@ function addCartProducts(uuid, amount)
             sessionStorage.setItem('cart', JSON.stringify(response));
             alert("producto agregado al carrito");
         } else {
-            // Request failed
             alert("No se pudo agregar el producto al carrito.");
         }
     };
 
     xhr.onerror = function() {
-        // An error occurred during the request
         console.error('Request error');
     };
 
     xhr.send(body);
 }
-
 
 function cleanProductsCard()
 {
@@ -131,9 +124,8 @@ function addListener()
     confirmButton.addEventListener('click', function(){
         let productId = this.getAttribute('data-product-id');
         let cantidad = document.getElementById('quantity').value;
-        console.log(cantidad);
-        console.log(productId);
-        addCartProducts(productId, cantidad);
+        let body = JSON.stringify([{productUuid: productId, amount: cantidad}])
+        addCartProducts(body);
     });
 }
 

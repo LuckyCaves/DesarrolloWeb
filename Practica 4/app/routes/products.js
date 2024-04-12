@@ -49,13 +49,6 @@ router.get('/:id', (req, res) => {
 
 router.post('/cart', (req, res) => {
 
-    if(!(req.body instanceof Array))
-    {
-        res.status(400);
-        res.send("Invalid request body.");
-        return;
-    }
-
     let productsError = [];
     for(let product of req.body)
     {
@@ -65,10 +58,13 @@ router.post('/cart', (req, res) => {
             if(found === undefined)
                 throw new Error("Product not found.");
             cart.addItem(product.productUuid, product.amount);
+            
+            cart.products = dataHandler.getProductById(product.productUuid);
         }
         catch (error)
         {
             productsError.push(product);
+            console.log(error);
         }
     }
 
