@@ -16,7 +16,9 @@
 		/>
 
 		<script src="https://kit.fontawesome.com/50b8111978.js" crossorigin="anonymous"></script>
+		<script src="./views/controllers/cartCrud.js"></script>
 		<script src="./views/controllers/index.js"></script>
+		<script src="./views/controllers/products.js"></script>
 
 		<!-- Modal Login -->
 		<div
@@ -177,7 +179,7 @@
 						<form onkeypress="return event.keyCode != 13">
 							<div class="mb-3">
 								<label for="quantity" class="form-label">Cantidad</label>
-								<input type="number" class="form-control" id="quantity" min=0 oninput="validity.valid||(value='')" required>
+								<input type="number" class="form-control" id="quantity" min=0 oninput="validity.valid||(value='')" value="1" required>
 							</div>
 						</form>
 						<button

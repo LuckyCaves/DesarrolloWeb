@@ -1,23 +1,10 @@
-function getSessionCart()
-{
-
-    let cart = [];
-
-    if(sessionStorage.getItem('cart') !== undefined)
-        cart = JSON.parse(sessionStorage.getItem('cart'));
-
-    console.log(cart);
-
-    return cart;
-
-}
-
-function addProductsCart(cart)
+function showProductsCart(cart)
 {
 
     let i = 0;
-    cart._products.forEach(product => {
-        addProductCard(product, cart._productProxies[i]);
+    cart._productProxies.forEach(product => {
+        let productData = cart._products.find(productC => productC._uuid == product.productUuid);
+        addProductCard(productData , product);
         i++;
     });
 
@@ -37,6 +24,12 @@ function addProductCard(product, proxie)
     title.textContent = product._title;
 
     let button = document.createElement('button');
+
+    button.addEventListener('click', function(){
+        let cart = new ShoppingCart(getSessionCart());
+        cart.removeItem(proxie.productUuid);
+        window.location.reload();
+    });
 
     let trash = document.createElement('i');
     trash.className = 'fa-solid fa-trash';
@@ -61,6 +54,7 @@ function addProductCard(product, proxie)
     inputQ.className = 'form-control';
     inputQ.id = 'Quantity';
     inputQ.required = true;
+    inputQ.disabled = true;
     inputQ.value = proxie.amount;
 
     inputQuantity.appendChild(input_group_quantity);
@@ -79,6 +73,7 @@ function addProductCard(product, proxie)
     inputP.className = 'form-control';
     inputP.id = 'Quantity';
     inputP.required = true;
+    inputP.disabled = true;
     inputP.value = product._pricePerUnit;
 
     let moneda = document.createElement('span');
@@ -108,8 +103,50 @@ function addProductCard(product, proxie)
 
 }
 
+function addSummaryCard()
+{
+
+    let summary = document.getElementById('summary');
+
+    let title = document.createElement('h4');
+    title.textContent = 'Resumen de compra';
+
+    let cart = new ShoppingCart(getSessionCart());
+
+    cart._productProxies.forEach(product => {
+        let productData = cart._products.find(productC => productC._uuid == product.productUuid);
+
+        let p = document.createElement('p');
+        p.textContent = productData._title + ': ' + product.amount + ' x $' + productData._pricePerUnit;
+
+        summary.appendChild(p);
+    });
+
+    let total = document.createElement('p');
+    total.textContent = 'Total: $' + cart.calculateTotal();
+
+    let buttonComprar = document.createElement('button');
+    buttonComprar.className = 'btn btn-primary';
+    buttonComprar.textContent = 'Comprar';
+
+    let br = document.createElement('br');
+    
+    let buttonCancelar = document.createElement('button');
+    buttonCancelar.className = 'btn btn-danger';
+    buttonCancelar.textContent = 'Cancelar';
+
+    summary.appendChild(title);
+    summary.appendChild(total);
+    summary.appendChild(buttonComprar);
+    summary.appendChild(br);
+    summary.appendChild(buttonCancelar);
+
+}
+
+
 window.onload = function()
 {
     let cart = getSessionCart();
-    addProductsCart(cart);
+    showProductsCart(cart);
+    addSummaryCard();
 };

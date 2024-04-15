@@ -5,6 +5,7 @@ const fs = require('fs');
 
 dataHandler.readProducts();
 let cart = new ShoppingCart();
+cart.products = dataHandler.getProducts();
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -58,8 +59,6 @@ router.post('/cart', (req, res) => {
             if(found === undefined)
                 throw new Error("Product not found.");
             cart.addItem(product.productUuid, product.amount);
-            
-            cart.products = dataHandler.getProductById(product.productUuid);
         }
         catch (error)
         {

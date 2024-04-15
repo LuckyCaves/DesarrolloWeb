@@ -1,16 +1,21 @@
+let cart = getSessionCart();
+
 function getProducts(pageNumber)
 {
-    cleanProductsCard();
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://localhost:3000/products', true);
-
+    
     xhr.setRequestHeader('Content-Type', 'application/json');
     if(pageNumber !== undefined)
+    {
+        cleanProductsCard();
         xhr.setRequestHeader('page', pageNumber);
+    }
 
     xhr.onload = function() {
         if (xhr.status === 200) {
             const response = JSON.parse(xhr.responseText);
+
             response.forEach(function(product) {
                 addProductCard(product);
             });
@@ -25,31 +30,6 @@ function getProducts(pageNumber)
     };
 
     xhr.send();
-}
-
-function addCartProducts(body)
-{
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:3000/products/cart', true);
-
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            // Request was successful
-            const response = JSON.parse(xhr.responseText);
-            sessionStorage.setItem('cart', JSON.stringify(response));
-            alert("producto agregado al carrito");
-        } else {
-            alert("No se pudo agregar el producto al carrito.");
-        }
-    };
-
-    xhr.onerror = function() {
-        console.error('Request error');
-    };
-
-    xhr.send(body);
 }
 
 function cleanProductsCard()
@@ -124,8 +104,14 @@ function addListener()
     confirmButton.addEventListener('click', function(){
         let productId = this.getAttribute('data-product-id');
         let cantidad = document.getElementById('quantity').value;
-        let body = JSON.stringify([{productUuid: productId, amount: cantidad}])
-        addCartProducts(body);
+        let cart = new ShoppingCart(getSessionCart());
+        try{
+            cart.addItem(productId, cantidad);
+            alert("Producto agregado al carrito");
+        }
+        catch(e){
+            alert(e.errorMessage);
+        }
     });
 }
 
