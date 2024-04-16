@@ -1,5 +1,22 @@
 let cart = getSessionCart();
 
+function changePage(pageNumber)
+{
+    getProducts(pageNumber);
+
+    if(pageNumber === 1)
+    {
+        document.getElementById('2').parentElement.className = "page-item";
+        document.getElementById('1').parentElement.className = "page-item active";
+    }
+    else
+    {
+        document.getElementById('1').parentElement.className = "page-item";
+        document.getElementById('2').parentElement.className = "page-item active";
+    }
+
+}
+
 function getProducts(pageNumber)
 {
     const xhr = new XMLHttpRequest();
@@ -20,6 +37,7 @@ function getProducts(pageNumber)
                 addProductCard(product);
             });
             addListener();
+            window.scrollTo(0, document.getElementById('productos').offsetTop);
         } else {
             console.error('Request failed. Status:', xhr.status);
         }
@@ -119,4 +137,13 @@ function addListener()
 window.onload = function()
 {
     getProducts(1);
+
+    document.getElementById('1').addEventListener('click', function(event){
+        event.preventDefault(); 
+        changePage(1);
+    });
+    document.getElementById('2').addEventListener('click', function(event){
+        event.preventDefault();
+        changePage(2);
+    });
 };

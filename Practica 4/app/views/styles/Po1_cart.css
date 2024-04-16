@@ -52,16 +52,6 @@ h4{
     font-weight: bold;
 }
 
-h4 button{
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    margin: 0.5rem;
-
-}
-
 #productCart{
     display: grid;
     position: relative;
@@ -77,8 +67,39 @@ h4 button{
     align-items: center;
 }
 
+#productos h4 #trashButton{
+    margin-left: 1rem;
+}
+
+#productos span
+{
+    padding-left: 0.75rem;
+}
+
+#productos #spanEdit
+{
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+
+#productos #editButton
+{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#productos #checkButton
+{
+    border-radius: 0;
+}
+#productos #xButton
+{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 #productos #inputQuantity, #productos #inputPrice{
-    width: 30%;
+    width: 40%;
 }
 
 #productos span{

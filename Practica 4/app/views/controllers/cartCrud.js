@@ -21,6 +21,7 @@ function getAllProducts(cart)
         if (xhr.status === 200) {
             const response = JSON.parse(xhr.responseText);
             cart._products = response;
+            setSessionCart(cart);
         } else {
             console.error('Request failed. Status:', xhr.status);
         }
