@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 function connectDB(jsonUser)
 {
-    let mongoConnection = "mongodb+srv://admin:Tadeo6714@myapp.ycpafeh.mongodb.net/MyAppDB";
+    let mongoConnection = "";
     let db = mongoose.connection;
 
     db.on('connecting', () => {
