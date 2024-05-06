@@ -47,6 +47,7 @@ $RECYCLE.BIN/
 *.lnk
 *.zipav
 *.zip
+*.pdf
 
 node_modules/
 # End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode
