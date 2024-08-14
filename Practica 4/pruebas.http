@@ -1,0 +1,205 @@
+### 1. Haz una llamada para mostrar tu arreglo de productos vacío.
+GET http://localhost:3000/products HTTP/1.1
+content-type: application/json
+page: 1
+
+### 2. Haz una llamada a la ruta para crear un producto, sin autenticación para ver el error.
+POST http://localhost:3000/admin/products HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Pulsera",
+    "description": "Pulsera de plata",
+    "imageUrl":  "NoHayImagen",
+    "unit": "pieza",
+    "stock": 10,
+    "pricePerUnit": 50,
+    "category": "Accesorios"
+}
+
+### 3. Crea 5 productos. Recuerda ponerles un ID fijo para que las siguientes pruebas sean más fáciles. 
+### (Se optó por modificar el archivo con la clase Products y que se genere el id a partir de los primeras 3 letras del título y el precio por unidad)
+POST http://localhost:3000/admin/products HTTP/1.1
+content-type: application/json
+x-auth: Hola
+
+{
+    "title": "Gatas",
+    "description": "Calzado para Escalar Method S - Black Diamond",
+    "imageUrl":  "/views/images/Productos/MethodS_Gatas_Octane.jpg",
+    "unit": "Par",
+    "stock": 10,
+    "pricePerUnit": 100,
+    "category": "Calzado"
+}
+
+###
+POST http://localhost:3000/admin/products HTTP/1.1
+content-type: application/json
+x-auth: Hola
+
+{
+    "title": "Pantalon",
+    "description": "Pantalon de Mezclilla",
+    "imageUrl":  "NoHayImagen",
+    "unit": "pieza",
+    "stock": 5,
+    "pricePerUnit": 100,
+    "category": "Ropa"
+}
+
+###
+POST http://localhost:3000/admin/products HTTP/1.1
+content-type: application/json
+x-auth: Hola
+
+{
+    "title": "Cuerda Dinámica",
+    "description": "Alpine 7.9mm 70m - Tendon",
+    "imageUrl":  "/views/images/Productos/Cuerda_Alpine_7.9mm_Amarillo.jpg",
+    "unit": "pieza",
+    "stock": 5,
+    "pricePerUnit": 100,
+    "category": "Ropa"
+}
+
+###
+POST http://localhost:3000/admin/products HTTP/1.1
+content-type: application/json
+x-auth: Hola
+
+{
+    "title": "Casco",
+    "description": "Casco Boreo - PETZL",
+    "imageUrl":  "/views/images/Productos/Casco_Boreo_Azul.jpg",
+    "unit": "pieza",
+    "stock": 15,
+    "pricePerUnit": 50,
+    "category": "Accesorio"
+}
+
+###
+POST http://localhost:3000/admin/products HTTP/1.1
+content-type: application/json
+x-auth: Hola
+
+{
+    "title": "Gorra",
+    "description": "Gorra de baseball",
+    "imageUrl":  "NoHayImagen",
+    "unit": "pieza",
+    "stock": 10,
+    "pricePerUnit": 30,
+    "category": "Accesorios"
+}
+###
+POST http://localhost:3000/admin/products HTTP/1.1
+content-type: application/json
+x-auth: Hola
+
+{
+    "title": "Playera",
+    "description": "Playera de algodon",
+    "imageUrl":  "NoHayImagen",
+    "unit": "pieza",
+    "stock": 20,
+    "pricePerUnit": 35,
+    "category": "Ropa"
+}
+###
+POST http://localhost:3000/admin/products HTTP/1.1
+content-type: application/json
+x-auth: Hola
+
+{
+    "title": "Tenis",
+    "description": "Tenis Nike",
+    "imageUrl":  "NoHayImagen",
+    "unit": "Pares",
+    "stock": 3,
+    "pricePerUnit": 150,
+    "category": "Ropa"
+}
+
+### 4. Elimina un producto.
+DELETE  http://localhost:3000/admin/products/Pla35 HTTP/1.1
+content-type: application/json
+x-auth: Hola
+
+### 5. Consulta un producto por ID.
+GET http://localhost:3000/products/Ten150 HTTP/1.1
+content-type: application/json
+
+### 6. Consulta un producto con el parámetro de filtrado que prefieras.
+GET http://localhost:3000/products HTTP/1.1
+content-type: application/json
+
+{
+    "query": "Ropa:"
+}
+
+### 7. Edita cualquier producto para cambiar su nombre.
+PUT  http://localhost:3000/admin/products/Gor30 HTTP/1.1
+content-type: application/json
+x-auth: Hola
+
+{
+    "title": "Cachucha",
+    "description": "Cachucha de baseball",
+    "imageUrl":  "NoHayImagen",
+    "unit": "pieza",
+    "stock": 10,
+    "pricePerUnit": 30,
+    "category": "Accesorios"
+}
+
+### 8. Realiza una llamada de nuevo para ver que tú arreglo de productos va correctamente hasta ahora.
+GET http://localhost:3000/products HTTP/1.1
+content-type: application/json
+
+### 9. Añade tres productos a tu carrito con la cantidad que quieras. Recuerda que la ruta debe de regresarte el carrito como lo tienes en ese momento.
+POST http://localhost:3000/products/cart HTTP/1.1
+content-type: application/json
+
+[
+    {
+        "productUuid": "Pul50",
+        "amount": 1
+    }
+]
+
+### 
+POST http://localhost:3000/products/cart HTTP/1.1
+content-type: application/json
+
+[
+    {
+        "productUuid": "Pan100",
+        "amount": 2
+    }
+]
+
+### 
+POST http://localhost:3000/products/cart HTTP/1.1
+content-type: application/json
+
+[
+    {
+        "productUuid": "Cac30",
+        "amount": 1
+    }
+]
+
+###10. Intenta agregar un producto cuyo ID no exista para verificar el error.
+POST http://localhost:3000/products/cart HTTP/1.1
+content-type: application/json
+
+[
+    {
+        "productUuid": "Pla35",
+        "amount": 1
+    }
+]
+# 11. En tu navegador (esta es la única prueba que haré fuera de tu .http), entra a tus rutas
+# de “/”, “/home” y “/shopping_cart” para verificar que tus html se muestren
+# correctamente.

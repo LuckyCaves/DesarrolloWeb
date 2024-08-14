@@ -1,0 +1,167 @@
+.navbar{
+	background-color: #0F0326;
+}
+
+.navbar img{
+	height: 4.5rem;
+}
+
+#navbarListContainer li{
+	padding-right: 0.5rem;
+}
+
+#navbarRightSide a{
+	padding: 0.5rem;
+}
+
+#searchForm{
+	align-items: center;
+	font-size: small;
+}
+
+#searchBar{
+	margin-right: 0.75rem;
+	height: min-content;
+	border-radius: 0.2rem;
+	background-color: #F5F7DC;
+	border: none;
+	outline: none;
+}
+
+#searchButton{
+	border-radius: 0.5rem;
+	background-color: #0F0326;
+	border: none;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.media{
+    padding: 1rem;
+    margin: 1rem;
+    margin-left: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px #0F0326;
+
+}
+
+h4{
+    font-weight: bold;
+}
+
+#productCart{
+    display: grid;
+    position: relative;
+    margin: 1rem;
+}
+
+#productCart img{
+    max-height: 9rem;
+    max-width: 100%;
+}
+
+#productos{
+    align-items: center;
+}
+
+#productos h4 #trashButton{
+    margin-left: 1rem;
+}
+
+#productos span
+{
+    padding-left: 0.75rem;
+}
+
+#productos #spanEdit
+{
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+
+#productos #editButton
+{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#productos #checkButton
+{
+    border-radius: 0;
+}
+#productos #xButton
+{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#productos #inputQuantity, #productos #inputPrice{
+    width: 40%;
+}
+
+#productos span{
+    width: 5.75rem;
+}
+
+#productos #moneda{
+    width: 4rem;
+}
+
+#summary{
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px #0F0326;
+    justify-content: center;
+}
+
+#summary button  {
+    margin: 2% 35%;
+}
+
+#summary p  {
+    font-weight: bold;
+}
+
+@media (max-width: 768px){
+    main{
+        display: block;
+    }
+    .media{
+        margin-left: 0;
+    }
+    #summary{
+        margin-left: 0;
+    }
+
+    #productCart img{
+        max-height: 9rem;
+        max-width: 100%; 
+    }
+
+    #productos #inputQuantity, #productos #inputPrice{
+        width: 60%;
+    }
+
+    #summary{
+        margin: 1rem;
+    
+    }
+}
+
+
+@media (min-width: 768px){
+    #productCart img{
+        float:right;
+        position: absolute;
+        right: 1rem;
+        top: 2rem;
+    }
+}
+
+#modalUser #buttonContainer{
+	text-align: center;
+}

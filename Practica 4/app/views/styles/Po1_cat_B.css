@@ -1,0 +1,62 @@
+.navbar{
+	background-color: #0F0326;
+}
+
+.navbar img{
+	height: 4.5rem;
+}
+
+#navbarListContainer li{
+	padding-right: 0.5rem;
+}
+
+#navbarRightSide a{
+	padding: 0.5rem;
+}
+
+#searchForm{
+	align-items: center;
+	font-size: small;
+}
+
+#searchBar{
+	margin-right: 0.75rem;
+	height: min-content;
+	border-radius: 0.2rem;
+	background-color: #F5F7DC;
+	border: none;
+	outline: none;
+}
+
+#searchButton{
+	border-radius: 0.5rem;
+	background-color: #0F0326;
+	border: none;
+}
+
+#modalUser #buttonContainer{
+	text-align: center;
+}
+
+#productos{
+	margin-top: 1rem;
+}
+
+#productos img{
+	margin: auto;
+
+}
+
+#productos .row{
+	width: 100%;
+	margin: auto;
+}
+
+#productos #card-container{
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+.card{
+	width: 95%;
+}
