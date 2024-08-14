@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "ascii-cats": "^1.1.1",
+    "chalk": "^5.3.0"
+  }
+}

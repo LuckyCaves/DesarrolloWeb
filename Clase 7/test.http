@@ -1,0 +1,14 @@
+POST https://api.npoint.io/8d879f3eabe74d0ecc95 HTTP/1.1
+content-type: application/json
+
+{
+  "var_1": "Kevin",
+  "var_2": "Gualo"
+}
+
+###
+GET https://api.npoint.io/8d879f3eabe74d0ecc95
+
+
+###
+GET https://jsonplaceholder.typicode.com/users
