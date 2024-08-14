@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <title>Tarea 2</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td rowspan="5" id="logo"><img src="img/netflixLogo.png" width="100" alt=""></td>
+            <td id="celdaVacia"></td>
+            <th>Estandar con Anuncios</th>
+            <th>Estandar</th>
+            <th>Premium</th>
+        </tr>
+        <tr>
+            <th>Dispositivos</th>
+            <td><p>2 Dispositivos compatibles a la vez</p></td>
+            <td><p>2 Dispositivos compatibles a la vez</p></td>
+            <td><p>4 Dispositivos compatibles a la vez</p></td>
+        </tr>
+        <tr>
+            <th>Descargar Contenido</th>
+            <td><p>2 Dispositivos compatibles a la vez</p></td>
+            <td><p>2 Dispositivos compatibles a la vez</p></td>
+            <td><p>6 Dispositivos compatibles a la vez</p></td>
+        </tr>
+        <tr>
+            <th>Calidad</th>
+            <td>FULL HD</td>
+            <td>FULL HD</td>
+            <td>ULTRA HD</td>
+        </tr>
+        <tr>
+            <th>Descripción</th>
+            <td>
+                <ul>
+                    <li>Con anuncios</li>
+                    <li>Algunas peliculas</li>
+                    <li>Series no disponibles</li>
+                    <li>Juegos Móviles</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>Series y Peliculas disponibles</li>
+                    <li>Juegos Móviles</li>
+                    <li>Hasta 1 miembro extra que no viva contigo</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>Series y Peliculas disponibles</li>
+                    <li>Juegos Móviles</li>
+                    <li>Hasta 2 miembros extra que no viva contigo</li>
+                    <li>Audio espacial de Netflix</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    <div id="formulario">
+
+        <h1>Obtener informacion</h1>
+
+        <form>
+
+            <div id="info">
+                <p>
+                    <label for="">Nombre: </label>
+                    <input type="text" obligatorio> <br>
+                </p>
+    
+                <p>
+                    <label for="">Correo: </label>
+                    <input type="email" obligatorio>
+                </p>
+    
+                <h3>Escoge un Plan</h3>
+                <p>
+                    <label id="checkbox" for="">Estándar con anuncios</label>
+                    <input type="checkbox">
+                </p>
+                <p>
+                    <label id="checkbox" for="">Estándar</label>
+                    <input type="checkbox">
+                </p>
+                <p>
+                    <label id="checkbox" for="">Premium</label>
+                    <input type="checkbox">
+                </p>
+            </div>
+            
+
+            <div id="botones">
+                <input id="botonSubmit" type="submit" value="Solicitar informacion"> <br>
+
+                <a href="https://www.netflix.com" target="_blank">
+                    <button type="button">Netflix</button>
+                </a>
+                
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+    
+</body>
+</html>

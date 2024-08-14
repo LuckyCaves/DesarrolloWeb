@@ -1,0 +1,144 @@
+body{
+    background-color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+table {
+    margin: auto;
+    margin-top: 50px;
+    border: 1;
+    border-collapse: separate;
+    border-spacing: 1em;
+}
+
+tr td{
+    color: white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px #888888;
+}
+
+th {
+    color: white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px #888888;
+    padding: 5px;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+tr{
+    padding-top: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #E50914;
+
+}
+
+tr:nth-child(odd) {
+    background-color: #B81D24;
+}
+
+td:hover {
+    background-color: red;
+}
+
+#logo{
+    background-color: #F5F5F1;
+}
+
+#celdaVacia{
+    /* display: none; */
+    background-color: white;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+}
+
+h1{
+    text-align: center;
+    font-size: 35px;
+    color: #B81D24;
+    margin-top: 50px;
+}
+
+h3{
+    text-align: center;
+    font-size: 25px;
+    color: #B81D24;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+}
+
+#formulario{
+    background-color: #F5F5F1;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px #888888;
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    padding-bottom: 20px;
+
+}
+
+#formulario p{
+    display: table-row;
+    text-align: center;
+    font-size: 20px;
+    color: #B81D24;
+    margin-top: 50px;
+    font-weight: 500;
+}
+
+label{
+    display: table-cell;
+    margin: 100px
+}
+
+#checkbox{
+    display: table-cell;
+    margin: 100px;
+    text-align: left;
+}
+
+form{
+    display: table;
+    margin: auto;
+    margin-top: 50px;
+}
+
+input{
+    display: table-cell;
+    margin: 5px;
+}
+
+input:invalid{
+    border: 2px solid red;
+}
+
+#botones{
+    text-align: center;
+    padding: 10px;
+}
+
+button, #botonSubmit{  
+    display: table-cell;
+    margin: 10px;
+    background-color: #B81D24;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px #888888;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+input:checked {
+    outline: 2px dashed red;
+}
